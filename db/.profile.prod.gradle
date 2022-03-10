@@ -1,0 +1,11 @@
+ext {
+    serverName    = "localhost"
+    serverPort    = "1433"
+    driver        = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    instanceName  = "PollIt"
+    username      = "exnet"
+    password      = "1234"
+    logLevel      = "debug"
+    schemaName    = "dbo"
+    context       = "prod"
+}

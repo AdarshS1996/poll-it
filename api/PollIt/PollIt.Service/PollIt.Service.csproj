@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PollIt.Core\PollIt.Core.csproj" />
+    <ProjectReference Include="..\PollIt.Data\PollIt.Data.csproj" />
+  </ItemGroup>
+
+</Project>

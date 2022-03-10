@@ -1,0 +1,81 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="bharat.chauhan" id="createTable_tQuestion">
+        <createTable tableName="tQuestion">
+            <column autoIncrement="true" name="QuestionId" type="int">
+                <constraints primaryKey="true" primaryKeyName="PK_tQuestion" />
+            </column>
+            <column name="Guid" type="uniqueidentifier">
+                <constraints nullable="false" />
+            </column>
+            <column name="Question" type="nvarchar(max)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValueConstraintName="DF_tQuestion_IsRemoved" defaultValueNumeric="0" name="IsRemoved" type="bit">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValueComputed="sysdatetimeoffset()" defaultValueConstraintName="DF_tQuestion_CreationDateTimeUtc" name="CreationDateTimeUtc" type="datetimeoffset">
+                <constraints nullable="false" />
+            </column>
+            <column name="UpdationDateTimeUtc" type="datetimeoffset" />
+        </createTable>
+    </changeSet>
+
+   <changeSet author="bharat.chauhan" id="createTable_tQuestionOption">
+        <createTable tableName="tQuestionOption">
+            <column autoIncrement="true" name="QuestionOptionId" type="int">
+                <constraints primaryKey="true" primaryKeyName="PK_tQuestionOption" />
+            </column>
+            <column name="QuestionId" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="Option" type="nvarchar(max)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValueComputed="sysdatetimeoffset()" defaultValueConstraintName="DF_tQuestionOption_CreationDateTimeUtc" name="CreationDateTimeUtc" type="datetimeoffset">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValueConstraintName="DF_tQuestionOption_IsRemoved" defaultValueNumeric="0" name="IsRemoved" type="bit">
+                <constraints nullable="false" />
+            </column>
+            <column name="UpdationDateTimeUtc" type="datetimeoffset" />
+        </createTable>
+
+        <addForeignKeyConstraint 
+                       baseColumnNames="QuestionId" 
+                       baseTableName="tQuestionOption" 
+                       constraintName="FK_tQuestion_tQuestionOption_QuestionId"  
+                       deferrable="false" 
+                       initiallyDeferred="false" 
+                       onDelete="NO ACTION"
+                       onUpdate="NO ACTION" 
+                       referencedColumnNames="QuestionId" 
+                       referencedTableName="tQuestion" 
+                       validate="true" />
+    </changeSet>
+
+    <changeSet author="bharat.chauhan" id="createTable_tVote">
+        <createTable tableName="tVote">
+            <column autoIncrement="true" name="VoteId" type="int">
+                <constraints primaryKey="true" primaryKeyName="PK_tVote" />
+            </column>
+            <column name="QuestionOptionId" type="int">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint 
+                       baseColumnNames="QuestionOptionId" 
+                       baseTableName="tVote" 
+                       constraintName="FK_tQuestionOption_tVote_QuestionOptionId"  
+                       deferrable="false" 
+                       initiallyDeferred="false" 
+                       onDelete="NO ACTION"
+                       onUpdate="NO ACTION" 
+                       referencedColumnNames="QuestionOptionId" 
+                       referencedTableName="tQuestionOption" 
+                       validate="true" />
+    </changeSet>
+</databaseChangeLog>

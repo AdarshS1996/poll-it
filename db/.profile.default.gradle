@@ -1,0 +1,11 @@
+ext {
+    serverName    = "[Database server name or IP address]"
+    serverPort    = "[Database port]"
+    driver        = "[database JDBC driver]"
+    instanceName  = "[Database db name]"
+    username      = "[Database username]"
+    password      = "[Database password]"
+    logLevel      = "info" //LogLevel, e.g. info, debug
+    schemaName    = "dbo"  //Database schema name. E.g. public
+    context       = "auto" //Liquibase context
+}

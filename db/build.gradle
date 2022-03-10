@@ -1,0 +1,95 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.liquibase:liquibase-gradle-plugin:2.0.1"
+        classpath 'org.liquibase:liquibase-core:3.6.1'
+        classpath 'com.microsoft.sqlserver:mssql-jdbc:7.4.1.jre8'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.liquibase.gradle'
+
+group = 'com.pollit'
+version = '0.0.1-SNAPSHOT'
+description = 'PollIt database upgrade tool'
+
+def dbChangeLog = "liquibase/master.xml"
+def dbProfileEnv = project.properties['env'] ?: "dev"
+def dbProfileEnvFile = "${projectDir}/.profile.${dbProfileEnv}.gradle"
+
+if (new File(dbProfileEnvFile).exists()) {
+    apply from: dbProfileEnvFile
+} else {
+    throw new GradleException("Cannot load build env profile($dbProfileEnvFile), please create the file from template file .profile.default.gradle")
+}
+
+def dbServerName     = project.properties['serverName'] ?: serverName
+def dbServerPort     = project.properties['serverPort'] ?: serverPort
+def dbDriver         = project.properties['driver'] ?: driver
+def dbInstanceName   = project.properties['instanceName'] ?: instanceName
+def dbUsername       = project.properties['username'] ?: username
+def dbPassword       = project.properties['password'] ?: password
+def dbLogLevel       = project.properties['logLevel'] ?: logLevel
+def dbSchemaName     = project.properties['schemaName'] ?: schemaName
+def dbcontext        = project.properties['context'] ?: context
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    liquibaseRuntime 'org.liquibase:liquibase-core:3.6.1'
+    liquibaseRuntime 'com.microsoft.sqlserver:mssql-jdbc:7.4.1.jre8'
+}
+
+defaultTasks 'printHelp'
+
+task printHelp {
+    doLast {
+        println "Typical commands"
+        println "    gradle printHelp:   Default, see meaningful command list"
+        println "    gradle printEnv:    See list of envrionment"
+        println "    gradle update:      Run liquibase update"
+    }
+}
+
+task printEnv {
+    doLast {
+        println "Connection:    jdbc:sqlserver://$dbServerName:$dbServerPort;instanceName=$dbInstanceName;"
+        println "ServerName:    $dbServerName"
+        println "ServerPort:    $dbServerPort"
+        println "Driver:        $dbDriver"
+        println "InstanceName:  $dbInstanceName"
+        println "Username:      $dbUsername"
+        println "Password:      ****${dbPassword.reverse().take(2).reverse()}"
+        println "context:       $dbcontext"
+        println "SchemaName:    $dbSchemaName"
+        println "LogLevel:      $dbLogLevel"
+    }
+}
+
+liquibase {
+    activities {
+        main {
+            url "jdbc:sqlserver://$dbServerName:$dbServerPort;databaseName=$dbInstanceName;"
+            driver dbDriver
+            username dbUsername
+            password dbPassword
+            contexts dbcontext
+            changeLogFile dbChangeLog
+            defaultSchemaName dbSchemaName
+            logLevel dbLogLevel
+            classpath "$projectDir"
+        }
+    }
+}
+
+task reset {
+    println "Reset your database $dbInstanceName..."
+    dependsOn dropAll
+    dependsOn update
+}
