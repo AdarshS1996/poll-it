@@ -10,7 +10,7 @@
             <column name="Guid" type="uniqueidentifier">
                 <constraints nullable="false" />
             </column>
-            <column name="Question" type="nvarchar(max)">
+            <column name="QuestionTitle" type="nvarchar(max)">
                 <constraints nullable="false" />
             </column>
             <column defaultValueConstraintName="DF_tQuestion_IsRemoved" defaultValueNumeric="0" name="IsRemoved" type="bit">
