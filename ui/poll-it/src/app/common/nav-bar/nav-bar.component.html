@@ -1,0 +1,19 @@
+<div>
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-light ">
+      <span class="navbar-toggler-icon leftmenutrigger" (click)="toggleNavBar()"></span>
+      <div class="logo1"><span class="poll-logo">Poll </span><span class="it-logo">It!</span></div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+        aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavBar()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText" [ngClass]="{'show': showNav == false}">
+        <ul class="navbar-nav animate side-nav" [ngClass]="{'open': showNav == false}"> 
+          <li class="nav-item">
+            <a class="nav-link" href="#"> <i class="fas fa-poll nav-link-pd"></i>&nbsp;Poll
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>

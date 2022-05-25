@@ -1,0 +1,32 @@
+<div id="polls" class="polls">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12 heading">
+        Create Poll
+      </div>
+     </div>
+
+     <div class="row card my-5">
+
+      <form [formGroup]="pollForm" (ngSubmit)="onSubmit">
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Please enter the question</label>
+          <input type="text" formControlName="question" class="form-control" id="formGroupExampleInput" placeholder="Example: Who is the best actor?">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Please add options</label>
+          <div *ngFor="let option of getOptions(); let i = index">
+            <input formControlName="this.pollForm.get('options')[i]" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+        </div>
+          
+
+          <button type="button" class="btn btn-primary mb-2" (click)="addAddress()">Add Address</button>
+        </div>
+      
+      </form>
+      
+
+  </div> 
+  
+</div>
