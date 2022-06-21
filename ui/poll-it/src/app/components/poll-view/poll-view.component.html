@@ -16,8 +16,8 @@
         </div>
     </div>
     <div>
-        <div *ngFor="let pollOption of poll.pollOption">
-            <span>{{pollOption}}</span>
-        </div>
+        <tr *ngFor="let pollOption of poll.questionOptions;">  
+            <td>{{pollOption.option}}</td>  
+        </tr>    
     </div>
 </div>

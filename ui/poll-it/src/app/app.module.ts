@@ -13,6 +13,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { PollService } from './services/poll.service';
 import { SearchFilter } from './pipes/search-filter.pipe';
+import { PollViewComponent } from './components/poll-view/poll-view.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SearchFilter } from './pipes/search-filter.pipe';
     HeaderComponent,
     PollsComponent,
     PollDetailsComponent,
+    PollViewComponent,
     SearchFilter
   ],
   imports: [

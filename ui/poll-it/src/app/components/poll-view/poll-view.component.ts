@@ -22,6 +22,7 @@ export class PollViewComponent implements OnInit {
         this.guid = this.activatedRoute.snapshot.params['guid']; 
         this.pollService.getQuestionById(this.guid).subscribe((question: Polls) => {
             this.poll = question;
+            console.log(this.poll);
         });
   }
 

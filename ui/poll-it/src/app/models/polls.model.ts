@@ -8,10 +8,10 @@ export class Polls {
     updationDateTimeUtc: Date;
     totalVotes: number;
     totalOptions: number;
-    pollOption: PollOption[];
+    questionOptions: PollOption[];
 
     constructor()
     {
-        this.pollOption = [];
+        this.questionOptions = [];
     }
 }
