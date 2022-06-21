@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PollIt.Data;
+using PollIt.Service.QuestionOptionService;
 using PollIt.Service.QuestionService;
 using PollIt.Service.VoteService;
 
@@ -30,6 +31,7 @@ namespace PollIt
 
             services.AddScoped<QuestionService>();
             services.AddScoped<VoteService>();
+            services.AddScoped<QuestionOptionService>();
 
             services.AddSwaggerGen(c =>
             {

@@ -11,12 +11,15 @@ namespace PollIt.Service.QuestionService
     {
         private readonly DatabaseContext _databaseContext;
         private readonly VoteService.VoteService _voteService;
+        private readonly QuestionOptionService.QuestionOptionService _questionOptionService;
 
         public QuestionService(DatabaseContext databaseContext,
-                               VoteService.VoteService voteService)
+                               VoteService.VoteService voteService,
+                               QuestionOptionService.QuestionOptionService questionOptionService)
         {
             _databaseContext = databaseContext;
             _voteService = voteService;
+            _questionOptionService = questionOptionService;
         }
 
         public List<QuestionDto> GetQuestions()
@@ -26,6 +29,8 @@ namespace PollIt.Service.QuestionService
             var questionDtos = questions.Select(question => QuestionMapper.ToDto(question)).ToList();
 
             questionDtos.ForEach(questionDto => questionDto.TotalVotes = _voteService.GetVoteCountByQuestionId(questionDto.QuestionId));
+
+            questionDtos.ForEach(questionDto => questionDto.TotalOptions = _questionOptionService.GetOptionCountByQuestionId(questionDto.QuestionId));
 
             return questionDtos;
         }

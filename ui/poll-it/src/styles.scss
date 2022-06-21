@@ -1,14 +1,68 @@
-*{
+// Primary orange color: #FF6D34
+// Secondary orange color: #FFB496
+
+
+* {
     font-size: 14px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
 }
 
-.heading{
-    padding: 16px 16px;
-    font-size: 20px;
-    background-color: white;
-    border-radius: 16px;
+body {
+//     background: url("./assets/main-background.svg") no-repeat center center fixed;
+//     -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
 }
 
-.card {
-    border-radius: 16px;
+.page-title {
+    font-size: 36px;
+    // padding: 24px 0px;
+    letter-spacing: 0.5px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.btn {
+    border-radius: 1rem;
+    padding: 8px 16px;
+    color: #FF6D34;
+    border: 1px solid rgba(255, 109, 52, 0.15);
+    background-color: rgba(255, 109, 52, 0.15);
+}
+
+.btn:hover, .btn:active {
+    color: #FF6D34 !important;
+    border: 1px solid #FF6D34 !important;
+    background-color: #ffffff !important;
+}
+
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.custom-table {
+    padding: 24px 0px;
+}
+
+.table thead th {
+    padding: 24px 0.75rem;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.no-data-found {
+    text-align: center;
+}
+
+.no-data-found:hover {
+    background-color: transparent !important;
 }

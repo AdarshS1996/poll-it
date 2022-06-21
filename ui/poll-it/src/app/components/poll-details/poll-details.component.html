@@ -1,0 +1,54 @@
+<div class="polls">
+    <div class="row">
+        <div class="col-12 back-button">
+            <button type="button" class="btn btn-primary" (click)="goBack()">
+                <img src="../../../assets/back-icon-100.png" width="20px" height="20px" />
+                &nbsp;
+                Polls
+              </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title">
+                Create a poll
+            </div>
+        </div>
+    </div>
+    <div>
+        <form [formGroup]="pollForm">
+            <div class="form-group">
+                <label for="question">POLL QUESTION</label>
+                <textarea type="text" class="form-control input-bottom-border" id="question" formControlName="questionTitle" rows="3" aria-describedby="question" placeholder="Eg. What is your favorite colour?"></textarea>
+            </div>
+            <div formArrayName="questionOptions">
+                <div *ngFor="let opt of getOptions().controls; let i = index;" [formGroupName]="i">
+                    <div class="form-group">
+                        <label for="option{{i+1}}">OPTION {{i+1}}</label>
+                        <input type="text" class="form-control input-bottom-border" formControlName="option" id="option{{i+1}}" placeholder="Eg. Option {{i+1}}">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary" (click)="addOption()">
+                    <img src="../../../assets/add-icon-100.png" width="20px" height="20px"/>
+                    &nbsp;
+                    Add Another Option
+                </button>
+            </div>
+
+            <div class="footer-buttons">
+                <button type="button" class="btn btn-primary mr-4" (click)="postPoll()">
+                    <img src="../../../assets/create-icon-100.png" width="20px" height="20px"/>
+                    &nbsp;
+                    Create poll
+                </button>
+                <button type="button" class="btn btn-primary" routerLink="/polls">
+                    <img src="../../../assets/cancel-icon-100.png" width="20px" height="20px"/>
+                    &nbsp;
+                    Cancel
+                </button>
+            </div>
+        </form> 
+    </div>
+</div>

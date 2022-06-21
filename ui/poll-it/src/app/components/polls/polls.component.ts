@@ -1,45 +1,33 @@
-import { Component } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Polls } from 'src/app/models/polls.model';
+import { PollService } from 'src/app/services/poll.service';
 
 @Component({
-  selector: 'polls',
+  selector: 'app-polls',
   templateUrl: './polls.component.html',
   styleUrls: ['./polls.component.scss']
 })
-export class PollsComponent {
+export class PollsComponent implements OnInit {
+  p: number = 1;
+  search: string = "";
+  polls: Polls[] = [];
 
-  public pollForm: FormGroup;
+  constructor(private pollService: PollService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {}
 
-  constructor(private formBuilder: FormBuilder) {
-    this.pollForm = this.formBuilder.group({
-      question: '',
-      options: this.formBuilder.array([ this.createOptions() ])
+  ngOnInit(): void {
+    this.pollService.getQuestions().subscribe(polls => {
+      this.polls = polls;
     });
   }
 
-  createOptions(): FormGroup {
-    return this.formBuilder.group({
-      option:''
-    });
- }
-
-  onSubmit(): void {
-    // Call the API here to create a question
-  
+  navigateToCreate() {
+    this.router.navigateByUrl('polls/create');
   }
 
-  addAddress(): void {
-    this.pollForm.get('options')?.value.push(this.createOptions());
-  }
-
-  get addressControls() {
-    console.log(this.pollForm.value)
-    return "";
-  }
-
-  getOptions() {
-    console.log(this.pollForm.get('options'))
-    return (this.pollForm.get('options') as FormArray).controls;
+  navigateToView(guid: string) {
+    this.router.navigateByUrl("polls/view/" + guid);
   }
 }

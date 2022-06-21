@@ -1,19 +1,21 @@
-<div>
-    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-light ">
-      <span class="navbar-toggler-icon leftmenutrigger" (click)="toggleNavBar()"></span>
-      <div class="logo1"><span class="poll-logo">Poll </span><span class="it-logo">It!</span></div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-        aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavBar()">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText" [ngClass]="{'show': showNav == false}">
-        <ul class="navbar-nav animate side-nav" [ngClass]="{'open': showNav == false}"> 
-          <li class="nav-item">
-            <a class="nav-link" href="#"> <i class="fas fa-poll nav-link-pd"></i>&nbsp;Poll
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-        </ul>
+<div class="nav-side-menu">
+  <div class="navbar-brand" href="#">Poll It</div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+  <div class="menu-list">
+    <ul id="menu-content" class="menu-content collapse out">
+      <li data-toggle="collapse" data-target="#polls" class="collapsed">
+        <a>
+          <img class="nav-icon" src="../../../assets/poll-icon-100.png" width="25px" height="25px"/>Polls
+        </a>
+      </li>
+      <div data-toggle="collapse" data-target="#loggedInUser" class="collapsed">
+        <a>
+          <button type="button" class="btn btn-primary user-button">
+            <img class="nav-icon" src="../../../assets/login-icon-100.png" width="25px" height="25px"/> Log In / Sign Up
+          </button>
+        </a>
       </div>
-    </nav>
+    </ul>
   </div>
+</div>

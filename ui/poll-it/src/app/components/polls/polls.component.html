@@ -1,32 +1,64 @@
-<div id="polls" class="polls">
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-12 heading">
+<div class="polls">
+  <div class="row">
+    <div class="col-12 create-button">
+      <button type="button" class="btn btn-primary" (click)="navigateToCreate()">
+        <img src="../../../assets/create-icon-100.png" width="20px" height="20px" />
+        &nbsp;
         Create Poll
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title">
+        Polls
       </div>
-     </div>
-
-     <div class="row card my-5">
-
-      <form [formGroup]="pollForm" (ngSubmit)="onSubmit">
-
-        <div class="form-group">
-          <label for="formGroupExampleInput">Please enter the question</label>
-          <input type="text" formControlName="question" class="form-control" id="formGroupExampleInput" placeholder="Example: Who is the best actor?">
-        </div>
-        <div class="form-group">
-          <label for="formGroupExampleInput2">Please add options</label>
-          <div *ngFor="let option of getOptions(); let i = index">
-            <input formControlName="this.pollForm.get('options')[i]" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-        </div>
-          
-
-          <button type="button" class="btn btn-primary mb-2" (click)="addAddress()">Add Address</button>
-        </div>
-      
-      </form>
-      
-
-  </div> 
-  
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-12">
+        <input name="search" 
+               id="indexSearchPolls" 
+               class="input-bottom-border" 
+               type="text" 
+               placeholder="Search"
+               [(ngModel)]="search">
+      </div>
+  </div>
+  <div class="custom-table">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col" width="10%">VOTE</th>
+          <th scope="col" width="62%">QUESTION</th>
+          <th scope="col" width="10%">OPTION</th>
+          <th scope="col" width="18%">POSTED ON</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="(polls | searchFilter : search : 'questionTitle').length === 0">
+          <td colspan="4" class="no-data-found">No records found</td>
+        </tr>
+        <tr *ngFor="let poll of polls | searchFilter : search : 'questionTitle' | paginate: { itemsPerPage: 8, currentPage: p }"
+            (click)="navigateToView(poll.guid)">
+          <th scope="row">
+            <div class="vote-block">
+              <img src="../../../assets/hand-icon-100.png" height="20px" width="20px" style="margin-bottom: 5px;"/>
+              <span>{{poll.totalVotes}}</span>
+            </div>
+          </th>
+          <td>{{poll.questionTitle}}</td>
+          <td>{{poll.totalOptions}}</td>
+          <td>{{poll.creationDateTimeUtc | date: 'MMM d, y'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row" *ngIf="polls.length !== 0">
+      <div class="col-12">
+        <pagination-controls class="pagination-controls" 
+                             (pageChange)="p = $event">
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
 </div>

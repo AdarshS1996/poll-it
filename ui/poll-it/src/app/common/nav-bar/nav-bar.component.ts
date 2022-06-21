@@ -7,10 +7,5 @@ import {DOCUMENT} from '@angular/common';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
-  showNav = false;
-  
-  public toggleNavBar() {
-    this.showNav = !this.showNav;
-  }
 
 }

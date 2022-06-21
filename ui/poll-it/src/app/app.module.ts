@@ -6,20 +6,35 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './common/header/header.component';
+import { CommonModule } from '@angular/common';
+import { PollDetailsComponent } from './components/poll-details/poll-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpClientModule } from '@angular/common/http';
+import { PollService } from './services/poll.service';
+import { SearchFilter } from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    PollsComponent
+    HeaderComponent,
+    PollsComponent,
+    PollDetailsComponent,
+    SearchFilter
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    NgxPaginationModule
   ],
-  providers: [],
+  providers: [
+    PollService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

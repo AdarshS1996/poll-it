@@ -20,6 +20,8 @@ namespace PollIt.Service.QuestionService
 
         public int? TotalVotes { get; set; }
 
+        public int? TotalOptions { get; set; }
+
         public List<QuestionOptionDto> QuestionOptions { get; set; }
     }
 }

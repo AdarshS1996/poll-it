@@ -1,0 +1,23 @@
+<div class="polls">
+    <div class="row">
+        <div class="col-12 back-button">
+            <button type="button" class="btn btn-primary" (click)="goBack()">
+                <img src="../../../assets/back-icon-100.png" width="20px" height="20px" />
+                &nbsp;
+                Polls
+              </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title">
+                {{poll.questionTitle}}
+            </div>
+        </div>
+    </div>
+    <div>
+        <div *ngFor="let pollOption of poll.pollOption">
+            <span>{{pollOption}}</span>
+        </div>
+    </div>
+</div>
