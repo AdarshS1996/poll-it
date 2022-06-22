@@ -21,7 +21,7 @@ namespace PollIt.Controllers
         }
 
         [HttpGet("{guid}")]
-        public IActionResult GetQuestions([FromRoute]string guid)
+        public IActionResult GetQuestion([FromRoute]string guid)
         {
             return Ok(_questionService.GetQuestion(guid));
         }

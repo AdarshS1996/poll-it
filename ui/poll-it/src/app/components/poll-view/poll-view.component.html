@@ -5,7 +5,7 @@
                 <img src="../../../assets/back-icon-100.png" width="20px" height="20px" />
                 &nbsp;
                 Polls
-              </button>
+            </button>
         </div>
     </div>
     <div class="row">
@@ -15,9 +15,40 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="asked-on">
+                {{poll.creationDateTimeUtc | date: 'MMM d, y'}}
+            </div>
+        </div>
+    </div>
     <div>
-        <tr *ngFor="let pollOption of poll.questionOptions;">  
-            <td>{{pollOption.option}}</td>  
-        </tr>    
+        <div *ngFor="let pollOption of poll.questionOptions;" class="card">
+            <div class="card-body">
+                <div class="poll-results-heading">
+                    <div class="name">{{pollOption.option}}</div>
+                    <div class="percent">{{calculateVotePercentage(pollOption.totalVotes)}}</div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar"
+                        [ngStyle]="{'width': calculateVotePercentage(pollOption.totalVotes)}" aria-valuemax="100"></div>
+                </div>
+
+                <div class="poll-votes-number">
+                    {{pollOption.totalVotes}} Votes
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-buttons">
+            <button type="button" class="btn btn-primary">
+                <img src="../../../assets/vote-icon-100.png" width="20px" height="20px" />
+                &nbsp;
+                Submit your vote
+            </button>
+        </div>
+
+        <!-- <div id="chartdiv" style="width: 100%; height: 400px;"></div> -->
     </div>
 </div>

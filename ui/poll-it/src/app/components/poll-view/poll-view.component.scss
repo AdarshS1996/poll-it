@@ -48,5 +48,38 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
-		padding: 24px 0px;
+		padding: 0px 0px 24px 0px;
+	}
+
+	.asked-on {
+		margin-bottom: 30px;
+	}
+
+	.poll-results-heading {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.poll-results-heading .name, .poll-results-heading .percent {
+		font-size: 24px;
+		margin-bottom: 15px;
+	}
+
+	.card {
+		margin-bottom: 30px;
+	}
+
+	.progress {
+		height: 8px;
+		border-radius: 1rem;
+		background-color: rgba(255, 109, 52, 0.15);
+	}
+
+	.progress-bar {
+		background-color: #FF6D34;
+	}
+
+	.poll-votes-number {
+		margin-top: 10px;
+		font-size: 18px;
 	}
