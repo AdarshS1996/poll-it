@@ -4,7 +4,11 @@
 
   <div class="menu-list">
     <ul id="menu-content" class="menu-content collapse out">
-      <li data-toggle="collapse" data-target="#polls" class="collapsed">
+      <li data-toggle="collapse" 
+          data-target="#polls" 
+          class="collapsed" 
+          [class.active]="primaryUrl==='polls' || primaryUrl===''"
+          (click)="redirectTo('/polls')">
         <a>
           <img class="nav-icon" src="../../../assets/poll-icon-100.png" width="25px" height="25px"/>Polls
         </a>

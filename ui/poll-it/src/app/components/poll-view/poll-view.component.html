@@ -22,6 +22,15 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="vote-count-block">
+                <img class="mr-3" src="../../../assets/hand-icon-100.png" height="35px" width="35px" />
+                <div class="mr-1 vote-number">{{poll.totalVotes}}</div>
+                Votes
+            </div>
+        </div>
+    </div>
     <div>
         <div *ngFor="let pollOption of poll.questionOptions;" class="card">
             <div class="card-body">
@@ -42,10 +51,10 @@
         </div>
 
         <div class="footer-buttons">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" (click)="navigateToVoteSubmit(poll.guid)">
                 <img src="../../../assets/vote-icon-100.png" width="20px" height="20px" />
                 &nbsp;
-                Submit your vote
+                Submit a vote
             </button>
         </div>
 

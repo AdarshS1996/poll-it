@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PollService } from './services/poll.service';
 import { SearchFilter } from './pipes/search-filter.pipe';
 import { PollViewComponent } from './components/poll-view/poll-view.component';
+import { VoteSubmitComponent } from './components/vote-submit/vote-submit.component';
+import { VoteService } from './services/vote.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { PollViewComponent } from './components/poll-view/poll-view.component';
     PollsComponent,
     PollDetailsComponent,
     PollViewComponent,
+    VoteSubmitComponent,
     SearchFilter
   ],
   imports: [
@@ -35,7 +38,8 @@ import { PollViewComponent } from './components/poll-view/poll-view.component';
     NgxPaginationModule
   ],
   providers: [
-    PollService
+    PollService,
+    VoteService
   ],
   bootstrap: [AppComponent]
 })

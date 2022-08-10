@@ -29,13 +29,17 @@ export class PollViewComponent implements OnInit {
   }
 
   goBack() {
-    this.location.back();
+    this.router.navigateByUrl('polls');
   }
 
   calculateVotePercentage(totalVote: number) {
-    return (Number.isNaN(Math.floor((totalVote/this.poll.totalVotes)*100)) 
+    return (Number.isNaN(Math.floor((totalVote/this.poll.totalVotes)*100))
            ? "0" 
-           : Math.floor((totalVote/this.poll.totalVotes)*100)) + "%";
+           : ((totalVote/this.poll.totalVotes)*100).toFixed(1)) + "%";
+  }
+
+  navigateToVoteSubmit(guid: string) {
+    this.router.navigateByUrl('polls/vote/' + guid);
   }
 
   // ngAfterViewInit() {

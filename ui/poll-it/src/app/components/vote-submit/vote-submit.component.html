@@ -1,0 +1,110 @@
+<div class="polls">
+    <div class="row">
+        <div class="col-12 back-button">
+            <button type="button" class="btn btn-primary" (click)="goBack(poll.guid)">
+                <img src="../../../assets/back-icon-100.png" width="20px" height="20px" />
+                &nbsp;
+                Back to results
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title">
+                {{poll.questionTitle}}
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <!-- {{pollOption.option}} -->
+        <div *ngFor="let pollOption of poll.questionOptions;" class="plans">
+            <label class="plan basic-plan" for="{{pollOption.questionOptionId}}">
+                <input type="radio" 
+                       name="plan" 
+                       id="{{pollOption.questionOptionId}}" 
+                       value="{{pollOption.questionOptionId}}"
+                       [(ngModel)]="selectedOptionId" />
+                <div class="plan-content">
+                    <div class="plan-details">
+                        {{pollOption.option}}
+                    </div>
+                </div>
+            </label>
+        </div>
+
+    <div class="footer-buttons">
+        <div class="mr-4">
+            <button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="../../../assets/share-icon-100.png" width="20px" height="20px" />
+                &nbsp;
+                Share
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                <img class="mr-2" src="../../../assets/link-icon-100.png" width="20px" height="20px" />
+                Share link
+              </button>
+              <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModalCenter1">
+                <img class="mr-2" src="../../../assets/qrcode-icon-100.png" width="20px" height="20px" />
+                Show QR code
+              </button>
+              <button class="dropdown-item" type="button" (click)="shareOnFacebook()">
+                <img class="mr-2" src="../../../assets/facebook-icon-100.png" width="20px" height="20px" />
+                Share on Facebook
+              </button>
+              <button class="dropdown-item" type="button" (click)="shareOnTwitter()">
+                <img class="mr-2" src="../../../assets/twitter-icon-100.png" width="20px" height="20px" />
+                Share on Twitter
+              </button>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="postVote()">
+            <img src="../../../assets/vote-icon-100.png" width="20px" height="20px" />
+            &nbsp;
+            Submit your vote
+        </button>
+    </div>
+
+    <!-- <div id="chartdiv" style="width: 100%; height: 400px;"></div> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Share link</h5>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">QR code</h5>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+</div>

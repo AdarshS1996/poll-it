@@ -70,7 +70,7 @@
 	}
 
 	.progress {
-		height: 8px;
+		height: 10px;
 		border-radius: 1rem;
 		background-color: rgba(255, 109, 52, 0.15);
 	}
@@ -82,4 +82,24 @@
 	.poll-votes-number {
 		margin-top: 10px;
 		font-size: 18px;
+	}
+
+	.vote-count-block {
+		margin-bottom: 30px;
+		color: #FFB496;
+		display: inline-flex;
+    	align-items: center;
+		border: 1px solid rgba(255, 109, 52, 0.15);
+		padding: 1rem;
+		border-radius: 1rem;
+		font-size: 16px;
+	}
+
+	.vote-number {
+		font-size: 32px;
+		font-weight: bold;
+	}
+
+	.name {
+		font-weight: bold;
 	}

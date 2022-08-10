@@ -3,8 +3,9 @@
 	z-index: 9990;
 	width: 25%;
 	height: 100%;
+	box-shadow: 0 0 1vw rgb(0 0 0 / 15%);
 	// letter-spacing: 0.5px;
-	border-right: 0.5px solid rgba(0,0,0,0.35);
+	// border-right: 0.5px solid rgba(0,0,0,0.35);
 	background-color: rgba(0,0,0,.07);
   }
   .nav-side-menu .navbar-brand {
@@ -47,12 +48,10 @@
   }
   .nav-side-menu ul .active,
   .nav-side-menu li .active {
-	  background-color: purple;
-  }
-  .nav-side-menu ul .active .fa-angle-down,
-  .nav-side-menu li .active .fa-angle-down {
-	transform: rotate(180deg);
-	transition: all .5s ease;
+	border-radius: 1rem;
+    color: #FF6D34;
+    border: 1px solid rgba(255, 109, 52, 0.15);
+    background-color: rgba(255, 109, 52, 0.15);
   }
   .nav-side-menu ul .sub-menu li,
   .nav-side-menu li .sub-menu li {
@@ -81,7 +80,9 @@
 	-o-transition: all 0.25s ease;
 	-ms-transition: all 0.25s ease;
 	transition: all 0.25s ease;
-    background: rgba(0,0,0, 0.15);
+    color: #FF6D34 !important;
+    border: 1px solid #FF6D34 !important;
+    background-color: #ffffff !important;
   }
   .menu-icon {
 	width: 38px;
@@ -94,12 +95,6 @@
     // padding: 8px 24px;
     border-radius: 1rem;
 	width: 100%;
-  }
-  .btn-group {
-	//   margin-top: 16px;
-  }
-  .nav-icon {
-
   }
   .nav-icon {
 	margin-right: 10px;
@@ -120,9 +115,11 @@
 	  width: 100%;
 	  margin-bottom: 10px;
 	  height: auto;
-	  background: rgb(244,244,244);
+	  background: rgb(235,235,235);
 	  border: none;
-	  border-bottom: 0.5px solid rgba(0,0,0,0.35);
+	  box-shadow: 0 0 1vw rgb(0 0 0 / 15%);
+	//   background-color: rgba(0,0,0,.07);
+	//   border-bottom: 0.5px solid rgba(0,0,0,0.35);
 	}
 	.nav-side-menu .toggle-btn {
 	  display: block;

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PollDetailsComponent } from './components/poll-details/poll-details.component';
 import { PollViewComponent } from './components/poll-view/poll-view.component';
+import { VoteSubmitComponent } from './components/vote-submit/vote-submit.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'polls/view/:guid',
     component: PollViewComponent
+  },
+  {
+    path: 'polls/vote/:guid',
+    component: VoteSubmitComponent
   },
   {
     path: '**',
